@@ -18,14 +18,11 @@ pipeline {
         stage('Nexus Artifact Upload') {
             steps {
                 script {
-                    
-                    def mavenPom = readMavenPom file: 'pom.xml'
-                    def nexusRepoName = mavenPom.version.endsWith("SNAPSHOT") ? "simpleapp-snapshot" : "simpleapp-release"
                     nexusArtifactUploader artifacts: [
                         [
                             artifactId: 'maven-web-application', 
                             classifier: '', 
-                            file: "/var/lib/jenkins/workspace/docker-pipeline/target/Landmark-${mavenPom.version}.war", 
+                            file: "/var/lib/jenkins/workspace/docker-pipeline/target/*.war", 
                             type: 'war'
                         ]
                     ], 
@@ -35,7 +32,7 @@ pipeline {
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
                     repository: 'nexus-artifact-repository', 
-                    version: "${mavenPom.version}"
+                    version: '1.0.0-SNAPSHOT'
                 }
             }
         }
