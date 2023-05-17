@@ -23,7 +23,7 @@ pipeline {
                         [
                             artifactId: 'maven-web-application', 
                             classifier: '', 
-                            file: "target/maven-web-application-1.0.0-SNAPSHOT.war", 
+                            file: "target/Landmark.war", 
                             type: 'war'
                         ]
                     ], 
