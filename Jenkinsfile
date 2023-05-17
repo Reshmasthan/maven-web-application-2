@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn clean install'
-                sh 'pwd && ls -lrt'
+                sh 'pwd && ls -lrt && cd target && ls -lrt'
             }
         }
         stage('Nexus Artifact Upload') {
