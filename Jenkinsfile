@@ -22,7 +22,7 @@ pipeline {
                         [
                             artifactId: 'maven-web-application', 
                             classifier: '', 
-                            file: "/var/lib/jenkins/workspace/docker-pipeline/target/*.war", 
+                            file: "/var/lib/jenkins/workspace/docker-pipeline/target/maven-web-application*.war", 
                             type: 'war'
                         ]
                     ], 
