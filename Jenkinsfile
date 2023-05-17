@@ -13,6 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn clean install'
+                sh 'pwd && ls -lrt'
             }
         }
         stage('Nexus Artifact Upload') {
@@ -22,7 +23,7 @@ pipeline {
                         [
                             artifactId: 'maven-web-application', 
                             classifier: '', 
-                            file: "/var/lib/jenkins/workspace/docker-pipeline/target/maven-web-application-1.0.0-SNAPSHOT.war", 
+                            file: "target/maven-web-application-1.0.0-SNAPSHOT.war", 
                             type: 'war'
                         ]
                     ], 
